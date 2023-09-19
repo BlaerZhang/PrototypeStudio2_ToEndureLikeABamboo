@@ -69,15 +69,19 @@ public class GameManager : MonoBehaviour
         
         Reset();
 
-        if (hit && isAllPressed)
+        if (hit)
         {
-            MoveDownCam();
-            isInGame = false;
-            shinobiExecution.enabled = true;
             foreach (GameObject player in playerArray)
             {
                 player.GetComponent<ShinobiControl>().rb2D.bodyType = RigidbodyType2D.Kinematic;
                 player.GetComponent<ShinobiControl>().rb2D.velocity = Vector2.zero;
+            }
+
+            if (isAllPressed)
+            {
+                MoveDownCam();
+                isInGame = false;
+                shinobiExecution.enabled = true;
             }
         }
 
